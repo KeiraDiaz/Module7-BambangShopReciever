@@ -95,3 +95,16 @@ This is the place for you to write reflections:
 Rust enforces strict **ownership and borrowing rules** to ensure **thread safety** at compile time. Unlike Java, where static variables can be mutated freely, Rust requires explicit synchronization mechanisms (`lazy_static!`, `RwLock<>`, `Mutex<>`) to prevent **data races** in multi-threaded environments. This guarantees memory safety without relying on runtime checks, making Rust programs more reliable in concurrent applications.  
 
 #### Reflection Subscriber-2
+
+> **Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.**
+
+Yes, I have explored `src/lib.rs` to understand how the `rocket` crate is initialized and how the routes are mounted. I learned that `rocket` uses a **builder pattern** to configure the web server, allowing developers to customize the server's behavior and routes. By chaining methods like `mount()`, `manage()`, and `launch()`, we can define the server's behavior and start listening for incoming requests. This modular approach makes it easy to add new routes and middleware, enhancing the server's functionality without cluttering the main codebase.
+
+> **Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?**
+
+Yes, the Observer pattern makes it easy to plug in more subscribers by decoupling the publisher and subscriber components. By defining a common interface for subscribers, we can add new subscribers without modifying the publisher's code, ensuring **loose coupling** between components. This allows us to scale the system by adding more receivers without affecting the main app's logic, making it easy to extend the system's functionality. Even if we spawn multiple instances of the main app, we can still add new subscribers seamlessly by implementing the observer interface, demonstrating the flexibility and extensibility of the Observer pattern.
+
+> **Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).**
+
+Yes, I have added my own tests to the Postman collection. This has been useful for my tutorial work as it allows me to verify the API endpoints and test different scenarios without writing additional code. By creating test cases for different HTTP methods and payloads, I can ensure that the API behaves as expected and handles edge cases correctly. This helps me identify bugs and validate the system's behavior, improving the overall quality of the application. 
+
