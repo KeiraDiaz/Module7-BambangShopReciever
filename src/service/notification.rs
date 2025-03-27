@@ -87,7 +87,8 @@ use std::thread;
                 Status::NotFound, 
                 e.to_string()
             ))
-        }
+        };
+    }
 
     pub fn recieve_notification(payload: Notification) -> Result<Notification> {
         let subscriber_result: Notification = NotificationRepository::add(payload);
