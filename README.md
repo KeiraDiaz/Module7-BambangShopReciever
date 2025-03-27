@@ -86,4 +86,12 @@ This is the place for you to write reflections:
 
 #### Reflection Subscriber-1
 
+>**1. Why use `RwLock<Vec<Notification>>` instead of `Mutex<Vec<Notification>>`?**  
+
+`RwLock<Vec<>>` allows **multiple readers** to access the notifications simultaneously, improving performance when multiple threads only need to read data. A `Mutex<Vec<>>` would enforce **exclusive access**, meaning even read operations would block each other. Since notifications are frequently read but only occasionally written, `RwLock<>` is a more efficient choice, as it allows concurrent reads while ensuring safe writes when needed.  
+
+> **2. Why does Rust not allow mutating a static variable like Java?** 
+
+Rust enforces strict **ownership and borrowing rules** to ensure **thread safety** at compile time. Unlike Java, where static variables can be mutated freely, Rust requires explicit synchronization mechanisms (`lazy_static!`, `RwLock<>`, `Mutex<>`) to prevent **data races** in multi-threaded environments. This guarantees memory safety without relying on runtime checks, making Rust programs more reliable in concurrent applications.  
+
 #### Reflection Subscriber-2
